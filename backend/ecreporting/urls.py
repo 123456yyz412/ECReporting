@@ -1,0 +1,15 @@
+from django.contrib import admin
+from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("api/auth/", include("apps.accounts.urls_auth")),
+    path("api/", include("apps.core.urls")),
+    path("api/", include("apps.accounts.urls")),
+    path("api/", include("apps.datasources.urls")),
+    path("api/", include("apps.reports.urls")),
+    path("api/", include("apps.datafill.urls")),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
