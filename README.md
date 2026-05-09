@@ -60,3 +60,16 @@
 
 - 部署手册：`docs/deploy.md`
 - 数据库初始化：`docs/db-init.md`
+
+
+
+## 示例
+
+
+
+![412d39002dc3399a3717e0a699ad3db4](./README.assets/412d39002dc3399a3717e0a699ad3db4.png)
+
+
+
+
+
