@@ -5,6 +5,7 @@
 ## 1. 目标
 
 初始化以下对象：
+
 - 数据库用户：`ecreporting`
 - 数据库：`ecreporting`
 - 权限：用户对该数据库具备完整使用权限
@@ -23,6 +24,23 @@ sudo -u postgres psql
 CREATE USER ecreporting WITH PASSWORD '请替换为强密码';
 CREATE DATABASE ecreporting OWNER ecreporting;
 GRANT ALL PRIVILEGES ON DATABASE ecreporting TO ecreporting;
+
+-- 实际执行
+CREATE DATABASE ecreporting;
+CREATE USER ecreporting WITH PASSWORD 'ecreporting';
+
+GRANT CONNECT ON DATABASE ecreporting TO ecreporting;
+GRANT USAGE,CREATE ON SCHEMA public TO ecreporting;
+
+GRANT USAGE, CREATE ON SCHEMA public TO ecreporting; 
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ecreporting; 
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO ecreporting; 
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO ecreporting; 
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO ecreporting;
+
+ALTER DATABASE ecreporting OWNER TO ecreporting;
+GRANT USAGE, CREATE ON SCHEMA public TO ecreporting;
+ALTER SCHEMA public OWNER TO ecreporting;
 ```
 
 可选（仅当你要限制连接数时）：
@@ -74,3 +92,4 @@ python manage.py bootstrap --admin-username admin --admin-password '请替换默
 sudo systemctl status postgresql
 sudo -u postgres psql -c "show listen_addresses;"
 ```
+
